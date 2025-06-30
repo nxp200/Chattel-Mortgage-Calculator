@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chattel Mortgage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chattel Mortgage Calculator</h1>
+            <p>Calculate your vehicle or equipment loan repayments</p>
+        </header>
+
+        <div class="calculator-container">
+            <div class="input-section">
+                <h2>Loan Details</h2>
+                
+                <div class="input-group">
+                    <label for="loan-amount">Loan Amount ($)</label>
+                    <input type="number" id="loan-amount" min="1000" step="1000" value="30000">
+                </div>
+                
+                <div class="input-group">
+                    <label for="interest-rate">Interest Rate (% p.a.)</label>
+                    <input type="number" id="interest-rate" min="0.1" max="30" step="0.1" value="5.5">
+                </div>
+                
+                <div class="input-group">
+                    <label for="loan-term">Loan Term (years)</label>
+                    <input type="number" id="loan-term" min="1" max="10" step="1" value="5">
+                </div>
+                
+                <div class="input-group">
+                    <label for="balloon-payment">Balloon Payment (% of loan)</label>
+                    <input type="number" id="balloon-payment" min="0" max="50" step="1" value="0">
+                </div>
+                
+                <div class="input-group">
+                    <label for="payment-frequency">Payment Frequency</label>
+                    <select id="payment-frequency">
+                        <option value="monthly">Monthly</option>
+                        <option value="fortnightly">Fortnightly</option>
+                        <option value="weekly">Weekly</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="fees">Establishment Fee ($)</label>
+                    <input type="number" id="fees" min="0" step="10" value="295">
+                </div>
+                
+                <div class="input-group">
+                    <label for="gst">Include GST in loan?</label>
+                    <div class="toggle-container">
+                        <input type="checkbox" id="gst">
+                        <label for="gst" class="toggle-label"></label>
+                    </div>
+                </div>
+                
+                <button id="calculate-btn" class="primary-button">Calculate</button>
+            </div>
+            
+            <div class="results-section">
+                <h2>Loan Summary</h2>
+                <div id="results-container" class="hidden">
+                    <div class="summary-card">
+                        <div class="summary-item">
+                            <span class="summary-label">Regular Payment:</span>
+                            <span id="regular-payment" class="summary-value">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Balloon Payment:</span>
+                            <span id="balloon-amount" class="summary-value">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Repayments:</span>
+                            <span id="total-repayments" class="summary-value">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Interest Paid:</span>
+                            <span id="total-interest" class="summary-value">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Total Cost:</span>
+                            <span id="total-cost" class="summary-value">$0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Repayment Breakdown</h3>
+                        <canvas id="repayment-chart"></canvas>
+                    </div>
+                    
+                    <div class="amortization-container">
+                        <h3>Amortization Schedule</h3>
+                        <div class="table-wrapper">
+                            <table id="amortization-table">
+                                <thead>
+                                    <tr>
+                                        <th>Period</th>
+                                        <th>Payment</th>
+                                        <th>Principal</th>
+                                        <th>Interest</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="amortization-body">
+                                    <!-- Will be filled by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>This calculator provides estimates only. Consult a financial professional for advice.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
