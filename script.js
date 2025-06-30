@@ -390,7 +390,4 @@ const performCalculation = () => {
     
     // Show results container
     resultsContainer.classList.remove('hidden');
-    
-    // Scroll to results
-    resultsContainer.scrollIntoView({ behavior: 'smooth' });
 };
