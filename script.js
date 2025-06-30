@@ -24,6 +24,9 @@ let repaymentChart = null;
 document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to the calculate button
     calculateBtn.addEventListener('click', performCalculation);
+    
+    // Automatically perform calculation with default values on page load
+    performCalculation();
 });
 
 // Format currency function
