@@ -212,6 +212,64 @@ input:checked + .toggle-label:before {
     font-weight: 600;
 }
 
+.gst-item {
+    background-color: #e8f5e9;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.gst-info {
+    display: none;
+    font-size: 12px;
+    color: #2e7d32;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.gst-warning {
+    display: none;
+    font-size: 12px;
+    color: #d32f2f;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.total-loan-item {
+    background-color: #e6f4ff;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.total-loan-item .summary-label,
+.total-loan-item .summary-value {
+    font-weight: 700;
+    font-size: 1.05em;
+}
+
+.benefit-card {
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #1976d2;
+}
+
+.benefit-card h4 {
+    color: #1976d2;
+    margin-bottom: 8px;
+}
+
+.benefit-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Chart Container */
 .chart-container {
     margin-bottom: 25px;

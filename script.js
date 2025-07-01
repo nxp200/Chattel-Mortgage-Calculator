@@ -14,6 +14,10 @@ const regularPaymentElement = document.getElementById('regular-payment');
 const balloonAmountElement = document.getElementById('balloon-amount');
 const totalRepaymentsElement = document.getElementById('total-repayments');
 const totalInterestElement = document.getElementById('total-interest');
+const totalLoanElement = document.getElementById('total-loan');
+const gstAmountElement = document.getElementById('gst-amount');
+const gstIncludedElement = document.getElementById('gst-included');
+const gstExcludedElement = document.getElementById('gst-excluded');
 const totalCostElement = document.getElementById('total-cost');
 const amortizationBody = document.getElementById('amortization-body');
 
@@ -359,11 +363,11 @@ const performCalculation = () => {
         return;
     }
     
+    // Calculate GST component (always calculate it, even if not included in loan)
+    const gstAmount = loanAmount * 0.1; // 10% GST
+    
     // Adjust loan amount for GST if checked
-    let adjustedLoanAmount = loanAmount;
-    if (includeGst) {
-        adjustedLoanAmount = loanAmount * 1.1; // Add 10% GST
-    }
+    let adjustedLoanAmount = includeGst ? loanAmount + gstAmount : loanAmount;
     
     // Calculate payments
     const result = calculatePayments(
@@ -380,6 +384,22 @@ const performCalculation = () => {
     balloonAmountElement.textContent = formatCurrency(result.balloonAmount);
     totalRepaymentsElement.textContent = formatCurrency(result.totalRepayments);
     totalInterestElement.textContent = formatCurrency(result.totalInterest);
+    
+    // Always show GST component but toggle the appropriate message
+    gstAmountElement.textContent = formatCurrency(gstAmount);
+    
+    // Show the appropriate GST message based on whether it's included in the loan
+    if (includeGst) {
+        gstIncludedElement.style.display = 'block';
+        gstExcludedElement.style.display = 'none';
+    } else {
+        gstIncludedElement.style.display = 'none';
+        gstExcludedElement.style.display = 'block';
+    }
+    
+    // Display the total loan amount (with or without GST)
+    totalLoanElement.textContent = formatCurrency(adjustedLoanAmount);
+    
     totalCostElement.textContent = formatCurrency(result.totalCost);
     
     // Update chart

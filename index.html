@@ -55,7 +55,7 @@
                 <div class="input-group">
                     <label for="gst">Include GST in loan?</label>
                     <div class="toggle-container">
-                        <input type="checkbox" id="gst">
+                        <input type="checkbox" id="gst" checked>
                         <label for="gst" class="toggle-label"></label>
                     </div>
                 </div>
@@ -67,6 +67,10 @@
                 <h2>Loan Summary</h2>
                 <div id="results-container" class="hidden">
                     <div class="summary-card">
+                        <div class="summary-item total-loan-item">
+                            <span class="summary-label">Total Loan Amount:</span>
+                            <span id="total-loan" class="summary-value">$0</span>
+                        </div>
                         <div class="summary-item">
                             <span class="summary-label">Regular Payment:</span>
                             <span id="regular-payment" class="summary-value">$0</span>
@@ -83,10 +87,21 @@
                             <span class="summary-label">Total Interest Paid:</span>
                             <span id="total-interest" class="summary-value">$0</span>
                         </div>
+                        <div class="summary-item gst-item">
+                            <span class="summary-label">GST Component:</span>
+                            <span id="gst-amount" class="summary-value">$0</span>
+                            <span id="gst-included" class="gst-info">Claimable via BAS immediately</span>
+                            <span id="gst-excluded" class="gst-warning">Not included in loan - must be paid upfront</span>
+                        </div>
                         <div class="summary-item">
                             <span class="summary-label">Total Cost:</span>
                             <span id="total-cost" class="summary-value">$0</span>
                         </div>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <h4>Chattel Mortgage Benefit</h4>
+                        <p>With a Chattel Mortgage, the GST component shown above is claimable via your Business Activity Statement (BAS) immediately, providing a significant cash flow advantage compared to other financing options.</p>
                     </div>
                     
                     <div class="chart-container">
