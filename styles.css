@@ -102,35 +102,24 @@ header h1 {
     height: 24px;
 }
 
-.toggle-container input {
+/* Hide all toggle checkbox inputs */
+input[type="checkbox"] {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute;
 }
 
-.toggle-label {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+/* Cleaned up loan amount styling */
+.loan-amount-wrapper {
+    width: 100%;
 }
 
-.toggle-label:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
+/* Inline label removed */
+
+
+
+/* Updated toggle styles */
 
 input:checked + .toggle-label {
     background-color: var(--primary-color);
@@ -141,7 +130,7 @@ input:focus + .toggle-label {
 }
 
 input:checked + .toggle-label:before {
-    transform: translateX(26px);
+    transform: translateX(16px);
 }
 
 /* Button Styles */
@@ -212,29 +201,7 @@ input:checked + .toggle-label:before {
     font-weight: 600;
 }
 
-.gst-item {
-    background-color: #e8f5e9;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 12px;
-    position: relative;
-}
-
-.gst-info {
-    display: none;
-    font-size: 12px;
-    color: #2e7d32;
-    font-style: italic;
-    margin-top: 4px;
-}
-
-.gst-warning {
-    display: none;
-    font-size: 12px;
-    color: #d32f2f;
-    font-style: italic;
-    margin-top: 4px;
-}
+/* GST item removed */
 
 .total-loan-item {
     background-color: #e6f4ff;
@@ -272,7 +239,7 @@ input:checked + .toggle-label:before {
 
 /* Chart Container */
 .chart-container {
-    margin-bottom: 25px;
+    margin: 20px 0 40px 0;
 }
 
 .chart-container h3 {
@@ -280,10 +247,130 @@ input:checked + .toggle-label:before {
     color: var(--secondary-color);
 }
 
+/* Chart Tabbed Interface */
+.chart-tabbed-container {
+    margin: 20px 0 40px 0;
+    background: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    padding: 20px 20px 0 20px;
+}
+.chart-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 10px;
+}
+.chart-tab {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-bottom 0.2s;
+}
+.chart-tab.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    background: #f4f8ff;
+}
+.chart-tab:not(.active):hover {
+    color: var(--primary-color);
+    background: #f8f9fa;
+}
+.chart-tab-content {
+    min-height: 320px;
+    height: 350px;
+    width: 100%;
+    display: block;
+}
+.chart-tab-content.hidden {
+    display: none;
+}
+@media (max-width: 600px) {
+    .chart-tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    .chart-tab {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        border-radius: 0;
+        padding: 12px 10px;
+        text-align: left;
+    }
+    .chart-tab.active {
+        border-bottom: none;
+        border-left: 3px solid var(--primary-color);
+    }
+}
+
 /* Amortization Table */
 .amortization-container h3 {
     margin-bottom: 15px;
     color: var(--secondary-color);
+}
+
+.amortization-container {
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+.amortization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.display-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.display-toggle .toggle-container {
+    margin: 0 5px;
+    width: 40px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.display-toggle .toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--primary-color);
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.display-toggle .toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.display-toggle input:checked + .toggle-label {
+    background-color: var(--primary-color);
+}
+
+.display-toggle input:checked + .toggle-label:before {
+    transform: translateX(20px);
 }
 
 .table-wrapper {
@@ -343,6 +430,16 @@ footer {
     
     th, td {
         padding: 8px;
+    }
+    
+    .loan-amount-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .gst-toggle-inline {
+        margin-left: 0;
+        margin-top: 10px;
     }
 }
 
